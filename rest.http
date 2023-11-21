@@ -1,0 +1,28 @@
+#API testing for user
+
+@userAPI = http://localhost:8000/api/v1/user
+
+###checking server status
+GET http://localhost:8000
+
+
+
+###insert user API
+POST {{userAPI}}
+Content-Type: application/json
+
+{
+  "name": "Ranjit Acharya",
+  "address": "6-12 Hudson St, Hurstville, NSW, 2220",
+  "email": "achranjit013@gmail.com",
+  "password": "qwert12"
+}
+
+###login user API
+POST {{userAPI}}/login
+Content-Type: application/json
+
+{
+  "email": "achranjit013@gmail.com",
+  "password": "qwert12"
+}
