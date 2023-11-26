@@ -33,6 +33,13 @@ Content-Type: application/json
   "password": "qwert12"
 }
 
+###get facts api
+GET {{factsAPI}}
+
+### get facts api - for logged user
+GET {{factsAPI}}/user-dashboard
+Authorization: 656087229437957e0b3d7529
+
 ###insert facts api
 POST {{factsAPI}}
 Content-Type: application/json
