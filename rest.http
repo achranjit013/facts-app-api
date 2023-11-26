@@ -1,6 +1,7 @@
 #API testing for user
 
 @userAPI = http://localhost:8000/api/v1/user
+@factsAPI = http://localhost:8000/api/v1/fact
 
 ###checking server status
 GET http://localhost:8000
@@ -12,10 +13,15 @@ POST {{userAPI}}
 Content-Type: application/json
 
 {
-  "name": "Ranjit Acharya",
-  "address": "6-12 Hudson St, Hurstville, NSW, 2220",
-  "email": "achranjit013@gmail.com",
-  "password": "qwert12"
+  "fname": "Roshan",
+  "mname": "",
+  "lname": "Acharya",
+  "street": "6-12 Hudson St",
+  "suburb": "Hurstville",
+  "states": "NSW",
+  "postcode": "2220",
+  "email": "roshan@gmail.com",
+  "password": "111"
 }
 
 ###login user API
@@ -25,4 +31,15 @@ Content-Type: application/json
 {
   "email": "achranjit013@gmail.com",
   "password": "qwert12"
+}
+
+###insert facts api
+POST {{factsAPI}}
+Content-Type: application/json
+Authorization: 656087229437957e0b3d7529
+
+{
+"fact": "React is being developed by Meta (formerly facebook)",
+"source":"https://opensource.fb.com/",
+"category": "technology"
 }

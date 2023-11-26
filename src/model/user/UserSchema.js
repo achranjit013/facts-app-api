@@ -1,12 +1,33 @@
 import mongoose from "mongoose";
 
 const userSchema = new mongoose.Schema({
-  name: {
+  fname: {
     type: String,
     required: true,
   },
-  address: {
+  mname: {
     type: String,
+    required: false,
+    default: "",
+  },
+  lname: {
+    type: String,
+    required: true,
+  },
+  street: {
+    type: String,
+    required: true,
+  },
+  suburb: {
+    type: String,
+    required: true,
+  },
+  states: {
+    type: String,
+    required: true,
+  },
+  postcode: {
+    type: Number,
     required: true,
   },
   email: {
@@ -21,7 +42,6 @@ const userSchema = new mongoose.Schema({
   },
   createdOn: {
     type: Date,
-    required: true,
     default: Date.now,
   },
 });

@@ -9,3 +9,8 @@ export const insertUser = (userObj) => {
 export const getUserByEmail = (email) => {
   return UserSchema.findOne({ email });
 };
+
+// get user by _id
+export const getUserById = (_id) => {
+  return UserSchema.findById(_id);
+};

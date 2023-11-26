@@ -62,10 +62,4 @@ router.post("/login", async (req, res, next) => {
   }
 });
 
-// read
-
-// update
-
-// delete
-
 export default router;

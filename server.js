@@ -17,6 +17,9 @@ connectMongoDB();
 import userRouter from "./src/router/userRouter.js";
 app.use("/api/v1/user", userRouter);
 
+import factsRouter from "./src/router/factsRouter.js";
+app.use("/api/v1/fact", factsRouter);
+
 app.use("/", (req, res) => {
   res.json({
     status: "success",
