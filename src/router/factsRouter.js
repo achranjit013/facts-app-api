@@ -1,8 +1,11 @@
 import express from "express";
 import {
+  deleteFact,
   getAllFacts,
   getAllFactsByUserId,
   insertFact,
+  updateFactById,
+  updateVotesByFactId,
 } from "../model/facts/FactsModel.js";
 import { userAuth } from "../middleware/authMiddleware.js";
 
@@ -55,7 +58,6 @@ router.get("/", async (req, res, next) => {
 router.get("/user-dashboard", userAuth, async (req, res, next) => {
   try {
     const result = await getAllFactsByUserId(req.userId);
-
     result?.length > 0
       ? res.json({
           status: "success",
@@ -73,8 +75,66 @@ router.get("/user-dashboard", userAuth, async (req, res, next) => {
   }
 });
 
-// update facts
+// update votes of fact - before logged in
+router.patch("/", async (req, res, next) => {
+  try {
+    const { _id, votesType, votesCount } = req.body;
+    const result = await updateVotesByFactId(_id, { [votesType]: votesCount });
+
+    result?._id
+      ? res.json({
+          status: "success",
+          message: "The vote has been updated",
+        })
+      : res.json({
+          status: "error",
+          message: "Error, unable to update the vote. Please try again later",
+        });
+  } catch (error) {
+    next(error);
+  }
+});
+
+// update facts - after logged in
+router.patch("/user-dashboard", userAuth, async (req, res, next) => {
+  try {
+    console.log("i am in router");
+    console.log(req.body);
+    const { _id, fact, source, category } = req.body;
+    const result = await updateFactById(_id, { fact, source, category });
+
+    result?._id
+      ? res.json({
+          status: "success",
+          message: "The fact has been updated",
+        })
+      : res.json({
+          status: "error",
+          message: "Error, unable to update the fact. Please try again later",
+        });
+  } catch (error) {
+    next(error);
+  }
+});
 
 // delete facts
+router.delete("/", async (req, res, next) => {
+  try {
+    const { idArr } = req.body;
+    const result = await deleteFact(idArr);
+
+    result?.deletedCount
+      ? res.json({
+          status: "success",
+          message: "All The fact(s) has been deleted",
+        })
+      : res.json({
+          status: "error",
+          message: "Error, unable to delete the fact. Please try again later",
+        });
+  } catch (error) {
+    next(error);
+  }
+});
 
 export default router;

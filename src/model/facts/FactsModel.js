@@ -18,6 +18,17 @@ export const getAllFacts = () => {
   return FactsSchema.find();
 };
 
-// update facts
+// update votes of fact - before logged in
+export const updateVotesByFactId = (_id, data) => {
+  return FactsSchema.findByIdAndUpdate(_id, data, { new: true });
+};
+
+// update facts  - after logged in
+export const updateFactById = (_id, data) => {
+  return FactsSchema.findByIdAndUpdate(_id, data, { new: true });
+};
 
 // delete facts
+export const deleteFact = (idArr) => {
+  return FactsSchema.deleteMany({ _id: { $in: idArr } });
+};

@@ -17,6 +17,18 @@ const factsSchema = new mongoose.Schema({
     type: Date,
     default: Date.now,
   },
+  votesLike: {
+    type: Number,
+    default: 0,
+  },
+  votesDislike: {
+    type: Number,
+    default: 0,
+  },
+  votesMindblowing: {
+    type: Number,
+    default: 0,
+  },
   userId: {
     type: mongoose.Schema.Types.ObjectId,
     ref: "User",

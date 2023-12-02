@@ -43,10 +43,10 @@ Authorization: 656087229437957e0b3d7529
 ###insert facts api
 POST {{factsAPI}}
 Content-Type: application/json
-Authorization: 656087229437957e0b3d7529
+Authorization: 656094ba5a44d37abdac78ca
 
 {
-"fact": "React is being developed by Meta (formerly facebook)",
-"source":"https://opensource.fb.com/",
+"fact": "React is a JavaScript library created by Facebook.",
+"source":"https://www.w3schools.com/whatis/whatis_react.asp",
 "category": "technology"
 }
