@@ -10,12 +10,12 @@ export const insertFact = (factObj) => {
 // read facts
 // if logged in: facts of logged user only
 export const getAllFactsByUserId = (userId) => {
-  return FactsSchema.find({ userId });
+  return FactsSchema.find({ userId }).sort({ votesLike: -1 });
 };
 
 // if not logged in: all facts
 export const getAllFacts = () => {
-  return FactsSchema.find();
+  return FactsSchema.find().sort({ votesLike: -1 });
 };
 
 // update votes of fact - before logged in
