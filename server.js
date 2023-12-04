@@ -20,7 +20,7 @@ app.use("/api/v1/user", userRouter);
 import factsRouter from "./src/router/factsRouter.js";
 app.use("/api/v1/fact", factsRouter);
 
-app.use("/", (req, res) => {
+app.get("/", (req, res) => {
   res.json({
     status: "success",
     message: "server is running well!",
